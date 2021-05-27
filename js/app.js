@@ -276,8 +276,10 @@ numberButtons.forEach(button => {
     if(((data.formula[0] == 0 || data.operation[0] == 0) || (data.formula[0] === '-' || data.operation[1] == 0)) && (!data.formula.includes('.') && e.target.innerText === '0')) {
       clearArrays();
       pushArraysAndShowOperation(e);
-    }
-    else {
+    } else if((data.operation).join().includes("sqrt")) {
+      resultPanelTextElement.textContent = 'Choose operator sign';
+      return;
+    } else {
       pushArraysAndShowOperation(e);
     }
   })
