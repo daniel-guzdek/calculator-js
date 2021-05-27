@@ -51,6 +51,7 @@ let data = {
 
 const calculateMathExpressionClearOperationAndFormulaArraysAndUpdateResult = () => {
   let evalResult = eval(data.formula.join(''));
+  evalResult = parseFloat(evalResult.toFixed(10));
   data.operation = [];
   data.formula = [];
   data.operation.push(evalResult);
@@ -61,6 +62,7 @@ const calculateMathExpressionClearOperationAndFormulaArraysAndUpdateResult = () 
 
 const calculateMathExpressionForFormulaArrayAndUpdateResult = () => {
   let evalResult = eval(data.formula.join(''));
+  evalResult = parseFloat(evalResult.toFixed(10));
   data.formula = [];
   data.formula.push(evalResult);
   resultPanelTextElement.innerText = evalResult;
@@ -68,7 +70,7 @@ const calculateMathExpressionForFormulaArrayAndUpdateResult = () => {
 
 const calculateSqrtAndUpdateArrays = () => {
   data.operation = [];
-  const sqrtNumber = Math.sqrt(eval(data.formula.join('')));
+  const sqrtNumber = Math.sqrt(parseFloat(eval(data.formula.join(''))).toFixed(10));
   data.operation.push(`sqrt(${eval(data.formula.join(''))})`);
   data.formula = [];
   data.formula.push(sqrtNumber);
@@ -395,6 +397,8 @@ btnMinus.addEventListener("click", (e) => {
 
 // PLUS BUTTON
 btnPlus.addEventListener("click", (e) => {
+  eval(data.operation);
+  eval(data.formula);
   if(data.formula.length === 0 || data.operation.length === 0) {
     return;
   } else if(data.formula[data.formula.length - 1] === '+' || data.formula[data.formula.length - 1] === '-' || data.formula[data.formula.length - 1] === '*' || data.formula[data.formula.length - 1] === '/' || data.formula[data.formula.length - 1] === '=') {
@@ -452,14 +456,22 @@ btnPlusMinus.addEventListener("click", (e) => {
 
 // COMA BUTTON
 btnComa.addEventListener("click", (e) => {
+  if(data.operation.includes("+")) {
+    const indexOfOperator = data.operation.indexOf("+");
+    console.log(indexOfOperator);
+    for(let i = indexOfOperator; i < data.operation.length; i++) {
+      if(data.operation[i] === ".") {
+        return;
+      }
+    }
+  } 
   if(data.operation[data.operation.length - 1] === '.' || data.formula[data.formula.length - 1] === '.') {
-    deleteLastIndexOfArrays();
+    return;
   } else if(data.formula.length === 0 || data.formula[data.formula.length -1] === '+' || data.formula[data.formula.length -1] === '-' || data.formula[data.formula.length -1] === '*' || data.formula[data.formula.length -1] === '/') {
     data.formula.push(0);
     data.operation.push(0);
     pushArraysAndShowOperation(e);
-  }
-  else if(data.formula.includes('.') && data.formula.indexOf('+') === -1) {
+  } else if(data.formula.includes('.') && data.formula.indexOf('+') === -1) {
     return;
   } else if(data.formula.length === 1 && data.formula.includes('.') && data.formula[data.formula.length - 1].includes('/') !== 1) {
     return;
