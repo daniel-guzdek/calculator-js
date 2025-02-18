@@ -1,61 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-  <link rel="stylesheet" href="css/style.css">
-  <title>Calculator JS</title>
-</head>
-<body>
-  <div class="calculator">
-    <h1 class="calc-title">Calculator (JavaScript)</h1>
-    <div class="calc-container">
-      <div class="output">
-        <div class="operation"></div>
-        <div class="current-result">0</div>
-      </div>
-      <div class="input">
-        <div class="row first-row">
-          <div class="btn fn-btn btn-persentage btn-initial-checked">%</i></div>
-          <div class="btn fn-btn btn-reciprocal btn-initial-checked">1/x</div>
-          <div class="btn fn-btn btn-clear">AC</div>
-          <div class="btn fn-btn btn-delete"><i class="fas fa-backspace"></i></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/css/style.css" />
+    <title>Calculator JS</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1 class="title">Calculator</h1>
+      <h2 class="subtitle">[JavaScript]</h2>
+      <div class="container">
+        <div class="output">
+          <div class="operation"></div>
+          <div class="result">0</div>
         </div>
-        <div class="row second-row">
-          <div class="btn fn-btn btn-pow-2">x<sup>2</sup></div>
-          <div class="btn fn-btn btn-pow-3">x<sup>3</sup></div>
-          <div class="btn fn-btn btn-sqrt"><i class="fas fa-square-root-alt"></i></div>
-          <div class="btn operator btn-divide btn-initial-checked"><i class="fas fa-divide"></i></div>
-        </div>
-        <div class="row third-row">
-          <div class="btn btn-7 btn-number">7</div>
-          <div class="btn btn-8 btn-number">8</div>
-          <div class="btn btn-9 btn-number">9</div>
-          <div class="btn operator btn-times btn-initial-checked">x</div>
-        </div>
-        <div class="row fourth-row">
-          <div class="btn btn-4 btn-number">4</div>
-          <div class="btn btn-5 btn-number">5</div>
-          <div class="btn btn-6 btn-number">6</div>
-          <div class="btn operator btn-minus">-</div>
-        </div>
-        <div class="row fifth-row">
-          <div class="btn btn-1 btn-number">1</div>
-          <div class="btn btn-2 btn-number">2</div>
-          <div class="btn btn-3 btn-number">3</div>
-          <div class="btn operator btn-plus">+</div>
-        </div>
-        <div class="row sixth-row">
-          <div class="btn btn-plus-minus">+/-</div>
-          <div class="btn btn-0 btn-number">0</div>
-          <div class="btn btn-coma">.</div>
-          <div class="btn operator btn-equals">=</div>
-        </div>
+        <div id="input"></div>
       </div>
     </div>
-  </div>
-  <script src="js/app.js"></script>
-</body>
+    <script src="src/classes/Display.js"></script>
+    <script src="src/classes/Button.js"></script>
+    <script src="src/classes/NumericButton.js"></script>
+    <script src="src/classes/FunctionButton.js"></script>
+    <script src="src/classes/OperatorButton.js"></script>
+    <script src="src/classes/Calculator.js"></script>
+    <script src="src/handlers/clickHandlers.js"></script>
+    <script src="src/utils/displayFunctions.js"></script>
+    <script src="src/utils/mathFunctions.js"></script>
+    <script src="src/main.js"></script>
+  </body>
 </html>
