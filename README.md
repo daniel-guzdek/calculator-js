@@ -1,3 +1,1 @@
-# Calculator-JS
-
-Calculator written in JavaScript.
+## Calculator (JavaScript)
